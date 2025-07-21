@@ -41,4 +41,16 @@ app.post('/login', (req, res) => {
   return res.status(401).json({ message: 'Usuário ou senha inválidos.' });
 });
 
+app.post('/recuperar-senha', (req, res) => {
+  const { username } = req.body;
+  const user = users.find(u => u.username === username);
+  if (!user) {
+    return res.status(404).json({ message: 'Usuário não encontrado.' });
+  }
+  // Desbloqueia e zera tentativas
+  loginAttempts[username] = { count: 0, blocked: false };
+  // Simula envio de nova senha
+  return res.status(200).json({ message: 'Recuperação de senha realizada. Usuário desbloqueado.' });
+});
+
 module.exports = app; 
