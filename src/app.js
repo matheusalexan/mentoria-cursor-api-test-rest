@@ -14,7 +14,8 @@ app.post('/login', (req, res) => {
   if (user) {
     return res.status(200).json({ message: 'Login realizado com sucesso!' });
   }
-  return res.status(401).json({ message: 'Credenciais inválidas.' });
+  // Caso de login inválido
+  return res.status(401).json({ message: 'Usuário ou senha inválidos.' });
 });
 
 module.exports = app; 
