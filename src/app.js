@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const swaggerUi = require('swagger-ui-express');
+const swaggerJSDoc = require('swagger-jsdoc');
 
 app.use(express.json());
 
@@ -52,5 +54,71 @@ app.post('/recuperar-senha', (req, res) => {
   // Simula envio de nova senha
   return res.status(200).json({ message: 'Recuperação de senha realizada. Usuário desbloqueado.' });
 });
+
+const swaggerDefinition = {
+  openapi: '3.0.0',
+  info: {
+    title: 'Mentoria Cursor API Test REST',
+    version: '1.0.0',
+    description: 'API REST com autenticação básica, bloqueio e recuperação de senha.'
+  },
+  servers: [
+    { url: 'http://localhost:3000', description: 'Servidor local' }
+  ]
+};
+
+const options = {
+  swaggerDefinition,
+  apis: ['./src/app.js'],
+};
+
+const swaggerSpec = swaggerJSDoc(options);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+/**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: Realiza login do usuário
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Login realizado com sucesso
+ *       401:
+ *         description: Usuário ou senha inválidos
+ *       423:
+ *         description: Usuário bloqueado por excesso de tentativas
+ */
+
+/**
+ * @swagger
+ * /recuperar-senha:
+ *   post:
+ *     summary: Recupera a senha e desbloqueia o usuário
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Recuperação de senha realizada
+ *       404:
+ *         description: Usuário não encontrado
+ */
 
 module.exports = app; 
