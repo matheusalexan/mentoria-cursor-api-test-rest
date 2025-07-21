@@ -8,13 +8,36 @@ const users = [
   { username: 'user1', password: 'senha123' }
 ];
 
+// Controle de tentativas e bloqueio (em memória)
+const loginAttempts = {};
+const MAX_ATTEMPTS = 3;
+
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
-  const user = users.find(u => u.username === username && u.password === password);
-  if (user) {
+  const user = users.find(u => u.username === username);
+
+  // Verifica se o usuário está bloqueado
+  if (loginAttempts[username] && loginAttempts[username].blocked) {
+    return res.status(423).json({ message: 'Usuário bloqueado por excesso de tentativas. Recupere sua senha.' });
+  }
+
+  if (user && user.password === password) {
+    // Login bem-sucedido: zera tentativas
+    loginAttempts[username] = { count: 0, blocked: false };
     return res.status(200).json({ message: 'Login realizado com sucesso!' });
   }
-  // Caso de login inválido
+
+  // Login inválido: incrementa tentativas
+  if (!loginAttempts[username]) {
+    loginAttempts[username] = { count: 0, blocked: false };
+  }
+  loginAttempts[username].count += 1;
+
+  if (loginAttempts[username].count >= MAX_ATTEMPTS) {
+    loginAttempts[username].blocked = true;
+    return res.status(423).json({ message: 'Usuário bloqueado por excesso de tentativas. Recupere sua senha.' });
+  }
+
   return res.status(401).json({ message: 'Usuário ou senha inválidos.' });
 });
 
