@@ -1,0 +1,35 @@
+{
+  "name": "mentoria-cursor-api-test-rest",
+  "version": "1.0.0",
+  "description": "API REST em JavaScript com autenticação básica para mentoria.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "mocha --recursive test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheusalexan/mentoria-cursor-api-test-rest.git"
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "autenticacao",
+    "mentoria"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matheusalexan/mentoria-cursor-api-test-rest/issues"
+  },
+  "homepage": "https://github.com/matheusalexan/mentoria-cursor-api-test-rest#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^11.7.1",
+    "nodemon": "^3.1.10",
+    "supertest": "^7.1.3"
+  }
+}
