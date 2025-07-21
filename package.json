@@ -25,7 +25,9 @@
   },
   "homepage": "https://github.com/matheusalexan/mentoria-cursor-api-test-rest#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "mocha": "^11.7.1",

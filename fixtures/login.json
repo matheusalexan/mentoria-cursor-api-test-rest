@@ -1,0 +1,18 @@
+{
+  "validUser": {
+    "username": "user1",
+    "password": "senha123"
+  },
+  "invalidUser": {
+    "username": "user1",
+    "password": "senhaErrada"
+  },
+  "emptyUser": {
+    "username": "",
+    "password": "senha123"
+  },
+  "emptyPassword": {
+    "username": "user1",
+    "password": ""
+  }
+}
