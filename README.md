@@ -79,3 +79,14 @@ Acesse a API em `http://localhost:3000`.
 
 ## Licença
 ISC 
+
+## Testes Automatizados e Relatório HTML
+
+Os testes automatizados podem ser executados com:
+```bash
+npm test
+```
+
+Após a execução, um relatório detalhado em HTML será gerado na pasta `reports/` (arquivo `index.html`).
+
+Para visualizar o relatório, basta abrir o arquivo `reports/index.html` no seu navegador. O relatório mostra todos os testes que passaram ou falharam, facilitando a análise do funcionamento da API. 
