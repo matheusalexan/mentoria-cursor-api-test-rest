@@ -1,0 +1,141 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-07-21T23:50:38.130Z",
+    "end": "2025-07-21T23:50:38.289Z",
+    "duration": 159,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "3ebe6e2e-63ef-4dd8-85e0-d4d08af31ae7",
+      "title": "",
+      "fullFile": "C:\\Users\\CleidsonThaísIsabel\\Documents\\Mentoria em Teste de Software\\Mentoria 2.0\\mentoria-cursor-api-test-rest\\test\\login.test.js",
+      "file": "\\test\\login.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6aed625d-3e55-48f2-93c5-dc927dc50d65",
+          "title": "Login - Testes principais com fixture",
+          "fullFile": "C:\\Users\\CleidsonThaísIsabel\\Documents\\Mentoria em Teste de Software\\Mentoria 2.0\\mentoria-cursor-api-test-rest\\test\\login.test.js",
+          "file": "\\test\\login.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "deve retornar 200 para login com credenciais corretas",
+              "fullTitle": "Login - Testes principais com fixture deve retornar 200 para login com credenciais corretas",
+              "timedOut": false,
+              "duration": 87,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(app)\n  .post('/login')\n  .send(loginData.validUser);\nif (response.status !== 200) {\n  throw new Error(`Esperado 200, mas retornou ${response.status}`);\n}",
+              "err": {},
+              "uuid": "c24cd6fa-1d6c-479f-8ca9-3684d82d482a",
+              "parentUUID": "6aed625d-3e55-48f2-93c5-dc927dc50d65",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve retornar 401 para login com senha inválida",
+              "fullTitle": "Login - Testes principais com fixture deve retornar 401 para login com senha inválida",
+              "timedOut": false,
+              "duration": 15,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(app)\n  .post('/login')\n  .send(loginData.invalidUser);\nif (response.status !== 401) {\n  throw new Error(`Esperado 401, mas retornou ${response.status}`);\n}",
+              "err": {},
+              "uuid": "6c4e793c-fd0e-4123-aca4-7973f284da12",
+              "parentUUID": "6aed625d-3e55-48f2-93c5-dc927dc50d65",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve retornar 423 após 3 tentativas inválidas",
+              "fullTitle": "Login - Testes principais com fixture deve retornar 423 após 3 tentativas inválidas",
+              "timedOut": false,
+              "duration": 43,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "for (let i = 0; i < 3; i++) {\n  await request(app).post('/login').send(loginData.invalidUser);\n}\nconst response = await request(app).post('/login').send(loginData.invalidUser);\nif (response.status !==423) {\n  throw new Error(`Esperado 423, mais retornou ${response.status}`);\n}",
+              "err": {},
+              "uuid": "e80808e5-a384-4ffa-88a7-e5c290f7b6aa",
+              "parentUUID": "6aed625d-3e55-48f2-93c5-dc927dc50d65",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c24cd6fa-1d6c-479f-8ca9-3684d82d482a",
+            "6c4e793c-fd0e-4123-aca4-7973f284da12",
+            "e80808e5-a384-4ffa-88a7-e5c290f7b6aa"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 145,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "index",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports",
+        "reportFilename": "index"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
