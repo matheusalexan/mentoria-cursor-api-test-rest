@@ -36,3 +36,28 @@ describe('Login - Testes principais com fixture', () => {
 
   })
 });
+
+describe('Recuperar Senha - Testes principais', () => {
+  it('deve retornar 200 para username válido', async () => {
+    const response = await request(app)
+      .post('/recuperar-senha')
+      .send({ username: loginData.validUser.username });
+
+    if (response.status !== 200) {
+      throw new Error(`Esperado 200, mas retornou ${response.status}`);
+    }
+  });
+
+  it('deve retornar 404 para username inválido', async () => {
+    const response = await request(app)
+      .post('/recuperar-senha')
+      .send({ username: 'usuarioInexistente' });
+
+    if (response.status !== 404) {
+      throw new Error(`Esperado 404, mas retornou ${response.status}`);
+    }
+    if (response.body.message !== 'Usuário não encontrado.') {
+      throw new Error(`Mensagem inesperada: ${response.body.message}`);
+    }
+  });
+});
