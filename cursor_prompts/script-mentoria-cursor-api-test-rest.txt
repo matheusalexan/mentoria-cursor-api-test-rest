@@ -1,0 +1,7 @@
+Descrição:
+Projeto de construção de uma API REST em JavaScript com funcionalidades básicas de autenticação. A API inclui os seguintes comportamentos: login com sucesso, login inválido, bloqueio de senha após três tentativas e recuperação de senha. Cada funcionalidade será implementada de forma separada, respeitando boas práticas de controle de versão no GitHub.
+Objetivo:
+Implementar uma API REST simples que simule um fluxo completo de login, contemplando validações e regras de negócio específicas. O desenvolvimento será feito em etapas, com uma branch exclusiva para cada funcionalidade. Os testes automatizados não fazem parte desta entrega inicial.
+Ferramentas: (JavaScript, GitHub, Mocha, Supertest)
+Para cada funcionalidade implementada, será criada uma branch específica. Após o desenvolvimento, os arquivos alterados serão verificados, adicionados ao controle de versão e comitados. Em seguida, será realizada a mesclagem da branch com a principal (main) e feita a atualização local da main por meio de um pull, garantindo que todo o processo siga as boas práticas de versionamento.
+Link: https://github.com/matheusalexan/mentoria-cursor-api-test-rest
