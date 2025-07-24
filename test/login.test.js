@@ -35,6 +35,15 @@ describe('Login - Testes principais com fixture', () => {
     }
 
   })
+  it('deve retornar 401 para login com usuário inexistente', async () => {
+    const response = await request(app)
+      .post('/login')
+      .send({ username: 'usuarioInexistente', password: 'senhaQualquer' });
+
+    if (![401, 404].includes(response.status)) {
+      throw new Error(`Esperado 401 ou 404, mas retornou ${response.status}`);
+    }
+  });
 });
 
 describe('Recuperar Senha - Testes principais', () => {
